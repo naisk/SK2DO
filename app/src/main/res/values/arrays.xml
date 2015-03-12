@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_category">
+        <item>Individual assignment</item>
+        <item>Group assignment</item>
+        <item>Presentation</item>
+    </string-array>
+
+    <string-array name="array_subject">
+        <item>Thai</item>
+        <item>English</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Biology</item>
+        <item>Sociology</item>
+    </string-array>
+
+    <string-array name="array_difficulty">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="array_points">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="pref_sortby_value">
+        <item>@string/pref_val_name</item>
+        <item>@string/pref_val_description</item>
+        <item>@string/pref_val_date</item>
+        <item>@string/pref_val_category</item>
+        <item>@string/pref_val_subject</item>
+        <item>@string/pref_val_difficulty</item>
+        <item>@string/pref_val_points</item>
+    </string-array>
+
+    <string-array name="pref_sortby_entry">
+        <item>@string/pref_entry_name</item>
+        <item>@string/pref_entry_description</item>
+        <item>@string/pref_entry_date</item>
+        <item>@string/pref_entry_category</item>
+        <item>@string/pref_entry_subject</item>
+        <item>@string/pref_entry_difficulty</item>
+        <item>@string/pref_entry_points</item>
+    </string-array>
+
+    <string-array name="pref_sortseq_value">
+        <item>@string/pref_val_asc</item>
+        <item>@string/pref_val_desc</item>
+    </string-array>
+
+    <string-array name="pref_sortseq_entry">
+        <item>@string/pref_entry_asc</item>
+        <item>@string/pref_entry_desc</item>
+    </string-array>
+
+    <string-array name="pref_filter_cate_value">
+        <item>@string/pref_val_null</item>
+        <item>@string/pref_val_indiv</item>
+        <item>@string/pref_val_group</item>
+        <item>@string/pref_val_present</item>
+    </string-array>
+
+    <string-array name="pref_filter_cate_entry">
+        <item>@string/pref_entry_null</item>
+        <item>@string/pref_entry_indiv</item>
+        <item>@string/pref_entry_group</item>
+        <item>@string/pref_entry_present</item>
+    </string-array>
+
+    <string-array name="pref_filter_subj_value">
+        <item>@string/pref_val_null</item>
+        <item>@string/pref_val_thai</item>
+        <item>@string/pref_val_eng</item>
+        <item>@string/pref_val_math</item>
+        <item>@string/pref_val_physics</item>
+        <item>@string/pref_val_chem</item>
+        <item>@string/pref_val_bio</item>
+        <item>@string/pref_val_social</item>
+    </string-array>
+
+    <string-array name="pref_filter_subj_entry">
+        <item>@string/pref_entry_null</item>
+        <item>@string/pref_entry_thai</item>
+        <item>@string/pref_entry_eng</item>
+        <item>@string/pref_entry_math</item>
+        <item>@string/pref_entry_physics</item>
+        <item>@string/pref_entry_chem</item>
+        <item>@string/pref_entry_bio</item>
+        <item>@string/pref_entry_social</item>
+    </string-array>
+
+    <string name="pref_val_null">null</string>
+    <string name="pref_entry_null">Show all</string>
+</resources>

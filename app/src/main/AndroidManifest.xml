@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.app.sk2do" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/ForecastTheme"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DatePickerActivity"
+            android:label="@string/title_activity_date_picker" >
+        </activity>
+        <activity
+            android:name=".AddActivity"
+            android:label="@string/title_activity_add" >
+        </activity>
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+
+        <provider
+            android:name=".data.ToDoProvider"
+            android:authorities="com.example.administrator.app.sk2do" />
+
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.app.sk2do.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EditActivity"
+            android:label="@string/title_activity_edit">
+        </activity>
+    </application>
+
+</manifest>

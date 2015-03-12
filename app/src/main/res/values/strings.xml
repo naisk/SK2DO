@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SK2DO</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pick_date">PickDate</string>
+    <string name="title_activity_date_picker">Pick your date</string>
+    <string name="title_activity_add">Add your TODO</string>
+    <string name="titile_add_button">Add new Todo list</string>
+    <string name="pref_sortby_label">Sortby</string>
+    <string name="pref_sortby_key">sortbykey</string>
+    <string name="pref_sortby_default">date</string>
+    <string name="pref_val_name">name</string>
+    <string name="pref_val_description">description</string>
+    <string name="pref_val_date">date</string>
+    <string name="pref_val_category">category</string>
+    <string name="pref_val_subject">subject</string>
+    <string name="pref_val_difficulty">difficulty</string>
+    <string name="pref_val_points">points</string>
+    <string name="pref_entry_name">Name</string>
+    <string name="pref_entry_description">Description</string>
+    <string name="pref_entry_date">Date</string>
+    <string name="pref_entry_category">Category</string>
+    <string name="pref_entry_subject">Subject</string>
+    <string name="pref_entry_difficulty">Difficulty</string>
+    <string name="pref_entry_points">Points</string>
+    <string name="pref_sortseq_label">Sort sequence</string>
+    <string name="pref_sortseq_key">sortseqkey</string>
+    <string name="pref_sortseq_default">ASC</string>
+    <string name="pref_val_asc">ASC</string>
+    <string name="pref_val_desc">DESC</string>
+    <string name="pref_entry_asc">Ascending</string>
+    <string name="pref_entry_desc">Descending</string>
+    <string name="pref_filter_cate_label">Category filter</string>
+    <string name="pref_filter_cate_key">categoryfilterkey</string>
+    <string name="pref_filter_cate_default">null</string>
+    <string name="pref_val_indiv">Individual assignment</string>
+    <string name="pref_val_group">Group assignment</string>
+    <string name="pref_val_present">Presentation</string>
+    <string name="pref_entry_indiv">Individual assignment</string>
+    <string name="pref_entry_group">Group assignment</string>
+    <string name="pref_entry_present">Presentation</string>
+    <string name="pref_filter_subj_label">Subject filter</string>
+    <string name="pref_filter_subj_key">filtersubjectkey</string>
+    <string name="pref_filter_subj_default">null</string>
+    <string name="pref_val_thai">Thai</string>
+    <string name="pref_entry_thai">Thai</string>
+    <string name="pref_val_eng">English</string>
+    <string name="pref_entry_eng">English</string>
+    <string name="pref_val_math">Mathematics</string>
+    <string name="pref_entry_math">Mathematics</string>
+    <string name="pref_val_physics">Physics</string>
+    <string name="pref_entry_physics">Physics</string>
+    <string name="pref_val_chem">Chemistry</string>
+    <string name="pref_entry_chem">Chemistry</string>
+    <string name="pref_val_bio">Biology</string>
+    <string name="pref_entry_bio">Biology</string>
+    <string name="pref_val_social">Sociology</string>
+    <string name="pref_entry_social">Sociology</string>
+    <string name="title_activity_setting">Settings</string>
+    <string name="title_activity_detail">TODO Details</string>
+    <string name="title_activity_edit">Edit your TODO</string>
+
+</resources>
