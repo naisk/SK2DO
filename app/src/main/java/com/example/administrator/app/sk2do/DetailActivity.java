@@ -1,5 +1,7 @@
 package com.example.administrator.app.sk2do;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -61,8 +63,30 @@ public class DetailActivity extends ActionBarActivity {
 
     }
     public void deleteData(View view){
-        getContentResolver().delete(getIntent().getData(),null,null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Deleting TODO")
+                .setMessage("Are you sure you want to delete?")
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        getContentResolver().delete(getIntent().getData(),null,null);
+                        finish();
+                    }
+                })
+
+
+                .show();
+
+
         //getLoaderManager().restartLoader(ID_LOADER,null,this);
-        finish();
+
     }
 }

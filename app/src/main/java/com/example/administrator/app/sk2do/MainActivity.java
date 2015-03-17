@@ -1,5 +1,7 @@
 package com.example.administrator.app.sk2do;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -85,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Call
         String cateFilter = Utility.getFilterCate(this);
         String subjFilter = Utility.getFilterSubj(this);
 
-        if(!(bSortBy==sortBy&&bSortSeq==sortSeq&&bCateFilter==cateFilter&&bSubjFilter==subjFilter)){
+        if(!(bSortBy.equals(sortBy)&&bSortSeq.equals(sortSeq)&&bCateFilter.equals(cateFilter)&&bSubjFilter.equals(subjFilter))){
 
             MainFragment ff = (MainFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_main);
             ff.onPreferenceChanged();
@@ -94,6 +96,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Call
             bSortSeq = sortSeq;
             bSubjFilter = subjFilter;
             bCateFilter = cateFilter;
+
         }
 
     }
@@ -117,12 +120,29 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Call
     public void deleteData(View view){
 
         if(mUri!=null) {
-            getContentResolver().delete(mUri, null, null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Deleting TODO")
+                    .setMessage("Are you sure you want to delete?")
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            getContentResolver().delete(mUri,null,null);
 
-            DetailFragment df = (DetailFragment)getSupportFragmentManager().findFragmentByTag(DETAILFRAGMENT_TAG);
-            getSupportFragmentManager().beginTransaction().hide(df).commit();
+                            DetailFragment df = (DetailFragment)getSupportFragmentManager().findFragmentByTag(DETAILFRAGMENT_TAG);
+                            getSupportFragmentManager().beginTransaction().hide(df).commit();
+                            mUri = null;
+                        }
+                    })
 
-            mUri = null;
+
+                    .show();
         }
 
 
