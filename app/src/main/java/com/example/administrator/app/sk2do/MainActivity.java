@@ -87,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Call
         String cateFilter = Utility.getFilterCate(this);
         String subjFilter = Utility.getFilterSubj(this);
 
-        if(!(bSortBy.equals(sortBy)&&bSortSeq.equals(sortSeq)&&bCateFilter.equals(cateFilter)&&bSubjFilter.equals(subjFilter))){
+        if(!(bSortBy==sortBy&&bSortSeq==sortSeq&&bCateFilter==cateFilter&&bSubjFilter==subjFilter)){
 
             MainFragment ff = (MainFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_main);
             ff.onPreferenceChanged();
