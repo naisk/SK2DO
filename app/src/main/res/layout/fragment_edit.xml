@@ -23,7 +23,7 @@
                 android:layout_weight="1"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="Name :"
+                android:text="Name"
                 />
 
             <EditText
@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="Description :"
+                android:text="Description"
                 />
 
             <EditText
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="Category :"
+                android:text="Category"
                 />
 
             <Spinner
@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="Subject :"
+                android:text="Subject"
                 />
 
             <Spinner
