@@ -77,7 +77,11 @@ public class DetailActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        getContentResolver().delete(getIntent().getData(),null,null);
+
+                        AsyncQuery asyncQuery = new AsyncQuery(getContentResolver());
+                        asyncQuery.startDelete(-1,null,getIntent().getData(),null,null);
+
+                        //getContentResolver().delete(getIntent().getData(),null,null);
                         finish();
                     }
                 })

@@ -133,7 +133,11 @@ public class MainActivity extends ActionBarActivity implements MainFragment.Call
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            getContentResolver().delete(mUri,null,null);
+
+                            AsyncQuery asyncQuery = new AsyncQuery(getContentResolver());
+                            asyncQuery.startDelete(-1,null,mUri,null,null);
+
+                            //getContentResolver().delete(mUri,null,null);
 
                             DetailFragment df = (DetailFragment)getSupportFragmentManager().findFragmentByTag(DETAILFRAGMENT_TAG);
                             getSupportFragmentManager().beginTransaction().hide(df).commit();

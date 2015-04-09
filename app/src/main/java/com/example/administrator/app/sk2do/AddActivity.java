@@ -1,5 +1,6 @@
 package com.example.administrator.app.sk2do;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.app.sk2do.data.UpdateToDoTask;
+import com.example.administrator.app.sk2do.data.ToDoContract;
 
 import java.text.SimpleDateFormat;
 
@@ -68,20 +69,30 @@ public class AddActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            Time time = new Time();
+
             View rootView = inflater.inflate(R.layout.fragment_add, container, false);
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-            Time time = new Time();
-            time.setToNow();
-            DatePickerActivity.DatePickerFragment.getDefaultDate(time.monthDay,time.month,time.year);
-
             TextView dateText = (TextView) rootView.findViewById(R.id.textview_add_date);
-            dateText.setText(dateFormat.format(time.toMillis(true)));
 
             Spinner spinCategory = (Spinner) rootView.findViewById(R.id.spinner_category);
             Spinner spinSubject = (Spinner) rootView.findViewById(R.id.spinner_subject);
             Spinner spinDifficulty = (Spinner) rootView.findViewById(R.id.spinner_difficulty);
             Spinner spinPoints = (Spinner) rootView.findViewById(R.id.spinner_points);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+            if(savedInstanceState == null) {
+
+                time.setToNow();
+                dateText.setText(dateFormat.format(time.toMillis(true)));
+                DatePickerActivity.DatePickerFragment.getDefaultDate(time.monthDay, time.month, time.year);
+
+                dayy = Integer.toString(time.monthDay);
+                monthh = Integer.toString(time.month);
+                yearr = Integer.toString(time.year);
+            }
+
+
 
 
             // Create an ArrayAdapter using the string array and a default spinner layout
@@ -110,11 +121,6 @@ public class AddActivity extends ActionBarActivity {
             spinSubject.setAdapter(adapterSubject);
             spinDifficulty.setAdapter(adapterDifficulty);
             spinPoints.setAdapter(adapterPoints);
-
-            time.setToNow();
-            dayy = Integer.toString(time.monthDay);
-            monthh = Integer.toString(time.month);
-            yearr = Integer.toString(time.year);
 
 
             return rootView;
@@ -167,21 +173,28 @@ public class AddActivity extends ActionBarActivity {
 
         //textView.setText(cateStr + subjStr + nameStr + descStr + diffStr + pointStr + dayy + "/" + monthh + "/" + yearr);
         //textView.setText( nameStr + descStr  + dayy + "/" + monthh + "/" + yearr);
-        String[] param = {
-                nameStr,
-                descStr,
-                cateStr,
-                subjStr,
-                diffStr,
-                pointStr,
-                dayy,
-                monthh,
-                yearr
-        };
 
-        UpdateToDoTask updateToDoTask = new UpdateToDoTask(this);
+        ContentValues Values = new ContentValues();
 
-        updateToDoTask.execute(param);
+        Time time = new Time();
+        long day = Long.parseLong(dayy,10);
+        long month = Long.parseLong(monthh,10);
+        long year = Long.parseLong(yearr,10);
+        time.set((int)day,(int)month,(int)year);
+
+        Values.put(ToDoContract.ToDoEntry.COLUMN_NAME, nameStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_DESC,descStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_CATEGORY,cateStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_SUBJECT,subjStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_DIFFICULTY,diffStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_POINT,pointStr);
+        Values.put(ToDoContract.ToDoEntry.COLUMN_DATE,time.toMillis(false));
+
+        //UpdateToDoTask updateToDoTask = new UpdateToDoTask(this,ADD);
+        AsyncQuery asyncQuery = new AsyncQuery(getContentResolver());
+        asyncQuery.startInsert(-1,null,ToDoContract.ToDoEntry.CONTENT_URI,Values);
+
+        //updateToDoTask.execute(Values);
         finish();
     }
 

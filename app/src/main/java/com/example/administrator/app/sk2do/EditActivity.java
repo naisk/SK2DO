@@ -29,6 +29,8 @@ import java.text.SimpleDateFormat;
 
 public class EditActivity extends ActionBarActivity {
 
+    static String savedDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,7 @@ public class EditActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
+
             View rootView = inflater.inflate(R.layout.fragment_edit, container, false);
 
             Spinner spinCategory = (Spinner) rootView.findViewById(R.id.spinner_edit_category);
@@ -136,8 +139,7 @@ public class EditActivity extends ActionBarActivity {
         }
         @Override
         public void onActivityCreated(Bundle savedInstanceStates){
-
-            getLoaderManager().initLoader(EDIT_LOADER,null,this);
+            if(savedInstanceStates==null)getLoaderManager().initLoader(EDIT_LOADER,null,this);
             super.onActivityCreated(savedInstanceStates);
         }
         @Override
@@ -172,6 +174,8 @@ public class EditActivity extends ActionBarActivity {
             Long milli = cursor.getLong(COL_TODO_DATE);
             Time time = new Time();
             time.set(milli);
+
+
 
             EditText nameText = (EditText)getActivity().findViewById(R.id.nameEditText);
             EditText descText = (EditText)getActivity().findViewById(R.id.descEditText);
@@ -218,19 +222,8 @@ public class EditActivity extends ActionBarActivity {
             monthh = Integer.toString(time.month);
             yearr = Integer.toString(time.year);
 
+
             dateView.setText(dateFormat.format(time.toMillis(false)));
-
-            String uxStr = cursor.getString(COL_TODO_ID)+
-                    cursor.getString(COL_TODO_NAME)+
-                    cursor.getString(COL_TODO_DESC)+
-                    cursor.getString(COL_TODO_CATE)+
-                    cursor.getString(COL_TODO_SUBJ)+
-                    cursor.getString(COL_TODO_DIFF)+
-                    cursor.getString(COL_TODO_POINT)+
-                    time.toString();
-
-
-
 
         }
 
@@ -294,8 +287,14 @@ public class EditActivity extends ActionBarActivity {
 
 
         //textView.setText( nameStr + descStr  + dayy + "/" + monthh + "/" + yearr);
-
-        getContentResolver().update(getIntent().getData(),values,null,null);
+        AsyncQuery asyncQuery = new AsyncQuery(getContentResolver());
+        asyncQuery.startUpdate(-1,null,getIntent().getData(),values,null,null);
+        //getContentResolver().update(getIntent().getData(),values,null,null);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
